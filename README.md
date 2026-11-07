@@ -2,6 +2,8 @@
 
 A self-hosted n8n, connected to everything, for $0.
 
+Live dashboard: https://jesunahmadushno.github.io/muse-n8n-extraction-101/ (an explorable view of this build record: request-path fault model, tunnel route finder, failure table, DNS cutover checker; numbers parsed from this README at build time).
+
 Repo status: this README is the publish-ready draft for the public repo `muse-n8n-extraction-101`. Links marked as placeholders are filled when the repo and the website page go live.
 
 ## The thesis
