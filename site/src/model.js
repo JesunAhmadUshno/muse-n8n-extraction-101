@@ -6,7 +6,7 @@ export function hops(f) {
     { id: 'visitor', label: 'Visitor', sub: 'browser' },
     { id: 'access', label: 'Cloudflare Access', sub: 'one-email Allow policy' },
     { id: 'edge', label: `${f.edge} edge`, sub: `${f.edgeCity}` },
-    { id: 'tunnel', label: `Tunnel ${f.tunnel}`, sub: `cloudflared ${f.cloudflaredVersion} on home PC` },
+    { id: 'tunnel', label: `Tunnel ${f.tunnel}`, sub: `cloudflared ${f.cloudflaredVersion} · PC` },
     { id: 'pc', label: `PC loopback :${f.pcPort}`, sub: 'tunnel ingress target' },
     { id: 'ssh', label: 'SSH reverse forward', sub: 'over Tailscale, respawn loop' },
     { id: 'vm', label: `VM 127.0.0.1:${f.vmPort}`, sub: 'cloud machine loopback' },
