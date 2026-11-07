@@ -1,12 +1,9 @@
 import { useMemo, useState, useEffect, useId } from 'react';
-import readme from '../../README.md?raw';
-import tutorial from '../../docs/tutorial-en.md?raw';
-import phasesCsv from '../../docs/phase-matrix.csv?raw';
-import { parseFacts, parseCsv } from './facts.js';
 import { hops, FAULTS, simulate, HOSTS, routes, CUTOVER, checkOrder, pollWait } from './model.js';
 
-const f = parseFacts(readme, tutorial);
-const phases = parseCsv(phasesCsv);
+// Parsed from README.md, docs/tutorial-en.md and docs/phase-matrix.csv by vite.config.js at build time.
+const f = __FACTS__;
+const phases = __PHASES__;
 const REPO = 'https://github.com/JesunAhmadUshno/muse-n8n-extraction-101';
 const blob = (p) => `${REPO}/blob/main/${p}`;
 const total = f.costs.reduce((s, c) => s + c.usd, 0);
