@@ -89,7 +89,7 @@ export default function App() {
   const [focusRow, setFocusRow] = useState(null);
   const jump = (n) => { setFocusRow(n); document.getElementById('failures')?.scrollIntoView({ behavior: 'smooth' }); };
   return (
-    <div className="wrap">
+    <div className="wrap"><a className="skip" href="#top">Skip to content</a>
       <MenuBar />
       <div className="glow" aria-hidden="true" />
       <Hero />
@@ -105,7 +105,7 @@ export default function App() {
       <footer>
         Every number on this page is read at build time from <code>README.md</code>, <code>docs/tutorial-en.md</code> and <code>docs/phase-matrix.csv</code>.
         The simulators are rule models of the documented design that run in your browser; they do not contact any machine. MIT, Jesun Ahmad Ushno.
-      </footer>
+      <nav className="support" aria-label="Support this work"><a href="https://github.com/sponsors/JesunAhmadUshno">Sponsor this work</a><a href="https://github.com/sponsors/JesunAhmadUshno">Donate</a><a href="https://buymeacoffee.com/jesun">Buy Me a Coffee</a><a href="https://calendly.com/jesunahmadushno/30min">Work with me</a></nav></footer>
     </div>
   );
 }
@@ -166,7 +166,7 @@ function RequestPath({ onRow }) {
     return `M${a.x + a.w / 2},${a.y + a.h} L${b.x + b.w / 2},${b.y}`;
   };
   return (
-    <section id="path" className="card window reveal" data-title="topology.svg — fault simulator">
+    <section id="path" className="card window reveal" data-title="topology.svg - fault simulator">
       <div className="head">
         <div>
           <p className="eyebrow">Request path · model of the documented design</p>
@@ -229,7 +229,7 @@ function Routes() {
   const out = routes({ ...cond, host }, f);
   const preset = ['quick', 'udp', 'fakeDns'].every((k) => cond[k] === HOSTS[host][k]);
   return (
-    <section id="routes" className="card window reveal" data-title="cloudflared.log — route finder">
+    <section id="routes" className="card window reveal" data-title="cloudflared.log - route finder">
       <div className="head">
         <div>
           <p className="eyebrow">Tunnel route finder · rule model</p>
@@ -303,7 +303,7 @@ function Cutover() {
   const label = Object.fromEntries(CUTOVER.map((s) => [s.key, s.label]));
   const move = (i, d) => setOrder((o) => { const n = [...o]; [n[i], n[i + d]] = [n[i + d], n[i]]; return n; });
   return (
-    <section id="dns" className="card window reveal" data-title="dns-cutover.txt — order checker">
+    <section id="dns" className="card window reveal" data-title="dns-cutover.txt - order checker">
       <div className="head">
         <div>
           <p className="eyebrow">DNS cutover · order checker</p>
@@ -348,7 +348,7 @@ function Guardian() {
   const W = 460, H = 150, l = 10, r = 10;
   const x = (s) => l + (Math.min(s, max) / max) * (W - l - r);
   return (
-    <section id="guardian" className="card window reveal" data-title="guardian.sh — poll calculator">
+    <section id="guardian" className="card window reveal" data-title="guardian.sh - poll calculator">
       <p className="eyebrow">Reset guardian</p>
       <h2>{f.resets} resets in one night. <em>Work lost: {f.workLost}.</em></h2>
       <p className="sub">
@@ -387,7 +387,7 @@ function Timeline() {
   const x = (k) => 30 + (k / (n - 1)) * (W - 60);
   const s = f.steps[i];
   return (
-    <section id="timeline" className="card window reveal" data-title="timeline.svg — the build, condensed">
+    <section id="timeline" className="card window reveal" data-title="timeline.svg - the build, condensed">
       <div className="head">
         <div>
           <p className="eyebrow">Build timeline · recorded</p>
@@ -421,7 +421,7 @@ function Timeline() {
 function Phases() {
   const tone = { done: 'good', live: 'good', started: 'warn', queued: 'info' };
   return (
-    <section id="phases" className="card window reveal" data-title="phases.csv — status and cost">
+    <section id="phases" className="card window reveal" data-title="phases.csv - status and cost">
       <p className="eyebrow">Phase matrix and cost · recorded</p>
       <h2>Phase {phases[0].phase} to {phases[phases.length - 1].phase}, and a bill that sums to <em>${total}</em>.</h2>
       <p className="sub">Phase status on {f.date[1]}, from <a href={blob('docs/phase-matrix.csv')}>docs/phase-matrix.csv</a> (transcribed from <a href={blob('assets/phase-matrix.png')}>assets/phase-matrix.png</a>). The cost total is summed in your browser from the README's cost rows and checked against the stated total at build time.</p>
